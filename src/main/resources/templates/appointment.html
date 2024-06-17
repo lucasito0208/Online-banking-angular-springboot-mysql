@@ -6,13 +6,13 @@
 <div class="container main">
     <div class="row">
         <div class="col-md-6">
-            <h3>Schedule An Appointment</h3>
+            <h3>Solicitar una cita</h3>
             <form th:action="@{/appointment/create}" method="post" id="appointmentForm">
                 <input type="hidden" name="id" th:value="${appointment.id}"/>
 
                 <div class="form-group">
-                    <label for="dateString">Pick a Date and Time:</label>
-                    <div class="input-append date form_datetime input-group" data-date="2017-01-20T15:25:00Z">
+                    <label for="dateString">Escoger fecha y hora:</label>
+                    <div class="input-append date form_datetime input-group" data-date="${fechaActual}">
                         <input class="form-control" type="text" value="" readonly="readonly"
                                th:value="${dateString}" name="dateString"
                                id="dateString" required="required"/>
@@ -22,19 +22,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="location">Pick a location:</label>
+                    <label for="location">Escoger sucursal:</label>
                     <select class="form-control" th:value="${appointment.location}" name="location" id="location"
                     >
-                        <option disabled="disabled" selected="selected"> -- select the location --</option>
-                        <option>Helsinki</option>
-                        <option>Turku</option>
-                        <option>Tampere</option>
-                        <option>Oulu</option>
+                        <option disabled="disabled" selected="selected"> -- Seleccione sucursal --</option>
+                        <option>C/Berna, 2, Barcelona</option>
+                        <option>C/Justicia, 29, Madrid</option>
+                        <option>Av.Magallanes, 32, Bilbao</option>
+                        <option>C/Asunçao, 56, Oviedo</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Notes:</label>
+                    <label for="description">Motivo:</label>
                     <textarea th:value="${appointment.description}" class="form-control" name="description"
                               id="description" placeholder="Description"></textarea>
                 </div>
@@ -44,7 +44,7 @@
                        name="${_csrf.parameterName}"
                        value="${_csrf.token}"/>
 
-                <a class="btn btn-primary" id="submitAppointment">Submit Scheduling</a>
+                <a class="btn btn-primary" id="submitAppointment">Pedir cita</a>
             </form>
 
             <div class="col-md-6">

@@ -8,30 +8,30 @@
         <div class="col-md-6">
             <form th:action="@{/transfer/betweenAccounts}" method="post">
                 <div class="form-group">
-                    <label for="transferFrom">1. Please select the account you would like to transfer From:</label>
+                    <label for="transferFrom">1. Seleccione la cuenta desde la que transferir:</label>
                     <select class="form-control" th:value="${transferFrom}" name="transferFrom" id="transferFrom"
                             required="required">
-                        <option disabled="disabled" selected="selected"> -- select your account --</option>
-                        <option value="Primary">Primary</option>
-                        <option value="Savings">Savings</option>
+                        <option disabled="disabled" selected="selected"> -- cuentas --</option>
+                        <option value="Primary">Tarjeta</option>
+                        <option value="Savings">Ahorros</option>
                     </select>
                     <br/>
                 </div>
 
                 <div class="form-group">
-                    <label for="transferTo">2. Please select the account you would like to transfer To:</label>
+                    <label for="transferTo">2. Seleccione la cuenta a la que quiere transferir:</label>
                     <select class="form-control" th:value="${transferTo}" name="transferTo" id="transferTo"
                             required="required">
-                        <option disabled="disabled" selected="selected"> -- select your account --</option>
-                        <option value="Primary">Primary</option>
-                        <option value="Savings">Savings</option>
+                        <option disabled="disabled" selected="selected"> -- cuentas --</option>
+                        <option value="Primary">Tarjeta</option>
+                        <option value="Savings">Ahorros</option>
                     </select>
                     <br/>
                 </div>
 
                 <div class="form-group">
-                    <label>3. Please specify the amount you would like to transfer: </label>
-                    <span class="input-group-addon">Amount $</span>
+                    <label>3. ¿Cuánto dinero desea transferir? </label>
+                    <span class="input-group-addon">Cantidad €</span>
                     <input th:value="${amount}" type="text" name="amount" id="amount" class="form-control"
                            aria-label="Amount (to the nearest dollar)"/>
                 </div>
@@ -40,7 +40,7 @@
                        name="${_csrf.parameterName}"
                        value="${_csrf.token}"/>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Transfer</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Transferir</button>
             </form>
 
             <div class="col-md-6">

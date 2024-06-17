@@ -6,13 +6,13 @@
 <div class="container">
     <div class="row main">
         <div class="col-md-6">
-            <h2 class="title">My Profile</h2>
+            <h2 class="title">Perfil</h2>
             <hr/>
             <form method="post" th:action="@{/user/profile}">
                 <input type="hidden" name="id" th:value="${user.userId}"/>
 
                 <div class="form-group">
-                    <label for="firstName">First Name</label>
+                    <label for="firstName">Nombre</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="lastName" class="cols-sm-2 control-label">Last Name</label>
+                    <label for="lastName" class="cols-sm-2 control-label">Apellidos</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="phone" class="cols-sm-2 control-label">Phone</label>
+                    <label for="phone" class="cols-sm-2 control-label">Contacto</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
@@ -47,8 +47,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Your Email</label><span
-                        class="bg-danger pull-right" th:if="${emailExists}">Email already exists</span>
+                    <label for="email" class="cols-sm-2 control-label">Email</label><span
+                        class="bg-danger pull-right" th:if="${emailExists}">Ese email ya está en uso</span>
                     <div class="cols-sm-10">
                         <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa"
@@ -60,8 +60,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="username" class="cols-sm-2 control-label">Username</label><span
-                        class="bg-danger pull-right" th:if="${usernameExists}">Username already exists</span>
+                    <label for="username" class="cols-sm-2 control-label">Nombre de usuario</label><span
+                        class="bg-danger pull-right" th:if="${usernameExists}">Usuario ya en uso.</span>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-group ">
-                    <button type="submit" class="btn btn-primary btn-block ">Change Settings
+                    <button type="submit" class="btn btn-primary btn-block ">Editar
                     </button>
                 </div>
 
@@ -82,13 +82,13 @@
         <div class="col-md-6">
             <div class="panel-heading">
                 <div class="panel-title text-center">
-                    <h1 class="title">Your Account Information</h1>
+                    <h1 class="title">Información</h1>
                     <hr/>
                 </div>
                 <table class="responstable">
                     <tr>
-                        <th>Primary Account Number</th>
-                        <th>Savings Account Number</th>
+                        <th>Número de cuenta asociada a la tarjeta</th>
+                        <th>Número de cuenta de ahorros</th>
                     </tr>
 
                     <tr>

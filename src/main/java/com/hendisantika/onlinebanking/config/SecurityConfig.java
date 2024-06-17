@@ -67,11 +67,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers(PUBLIC_MATCHERS).permitAll()
                         .anyRequest().authenticated()
-                );
-
-        http
+                )
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors().disable()
+                .cors(AbstractHttpConfigurer::disable)
                 .formLogin(formLogin -> formLogin
                         .loginPage("/index").permitAll()
                         .defaultSuccessUrl("/userFront", true)
@@ -80,18 +78,13 @@ public class SecurityConfig {
                 .logout(logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/index?logout")
-                        .deleteCookies("remember-me").permitAll()
-                        .logoutSuccessUrl("/login?logout")
-                )
-                .rememberMe().userDetailsService(userDetailsServiceBean);
+                        .deleteCookies("remember-me")
+                        .permitAll()
+                );
         return http.build();
     }
 
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
-//        auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder);
-//    }
+
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {

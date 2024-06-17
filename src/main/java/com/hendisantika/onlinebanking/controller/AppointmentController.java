@@ -15,18 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-/**
- * Created by IntelliJ IDEA.
- * Project : online-banking
- * User: hendisantika
- * Email: hendisantika@gmail.com
- * Telegram : @hendisantika34
- * Date: 04/09/18
- * Time: 06.35
- * To change this template use File | Settings | File Templates.
- */
 @Controller
 @RequestMapping("/appointment")
 @RequiredArgsConstructor
@@ -38,7 +30,13 @@ public class AppointmentController {
 
     @GetMapping(value = "/create")
     public String createAppointment(Model model) {
+
         Appointment appointment = new Appointment();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        String fechaActual = now.format(formatter);
+
+        model.addAttribute("fechaActual", fechaActual);
         model.addAttribute("appointment", appointment);
         model.addAttribute("dateString", "");
 
@@ -48,9 +46,9 @@ public class AppointmentController {
     @PostMapping(value = "/create")
     public String createAppointmentPost(@ModelAttribute("appointment") Appointment appointment, @ModelAttribute("dateString") String date, Model model, Principal principal) throws ParseException {
 
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-        Date d1 = format1.parse(date);
-        appointment.setDate(d1);
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        Date fechaActual = formato.parse(date);
+        appointment.setDate(fechaActual);
 
         User user = userService.findByUsername(principal.getName());
         appointment.setUser(user);
